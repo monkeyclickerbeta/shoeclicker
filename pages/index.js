@@ -96,6 +96,7 @@ export default function Home() {
               alt="Shoe"
               width={220}
               height={220}
+              loading="eager"
               draggable={false}
               style={{
                 userSelect: "none",
