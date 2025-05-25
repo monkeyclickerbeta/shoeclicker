@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-// A cool transparent shoe PNG from PNGWing
-const SHOE_IMAGE = "https://www.pngall.com/wp-content/uploads/5/Sneaker-PNG-Image.png";
+// Reliable transparent sneaker PNG from PNGWing
+const SHOE_IMAGE = "https://pngimg.com/d/sneakers_PNG34.png";
 
 const UPGRADES = [
   { name: "Bigger Shoe", cost: 50, cps: 1, desc: "+1 click/sec" },
@@ -13,8 +13,8 @@ export default function Home() {
   const [clicks, setClicks] = useState(0);
   const [cps, setCps] = useState(0);
   const [owned, setOwned] = useState(Array(UPGRADES.length).fill(0));
+  const [imgError, setImgError] = useState(false);
 
-  // Load saved state
   useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = window.localStorage.getItem("shoeclicker-state");
@@ -27,7 +27,6 @@ export default function Home() {
     }
   }, []);
 
-  // Save state
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(
@@ -37,7 +36,6 @@ export default function Home() {
     }
   }, [clicks, cps, owned]);
 
-  // Auto clicker
   useEffect(() => {
     const interval = setInterval(() => {
       setClicks((c) => c + cps);
@@ -80,18 +78,30 @@ export default function Home() {
       </div>
       <div className="clicker-box">
         <button className="shoe-btn" onClick={handleClick} aria-label="Click the shoe!">
-          <img
-            src={SHOE_IMAGE}
-            alt="Shoe"
-            width={220}
-            height={220}
-            draggable={false}
-            style={{
-              userSelect: "none",
-              WebkitUserDrag: "none",
-              filter: "drop-shadow(0 8px 16px #60a5fa50)"
-            }}
-          />
+          {!imgError ? (
+            <img
+              src={SHOE_IMAGE}
+              alt="Shoe"
+              width={220}
+              height={220}
+              draggable={false}
+              style={{
+                userSelect: "none",
+                WebkitUserDrag: "none",
+                filter: "drop-shadow(0 8px 16px #60a5fa50)"
+              }}
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div style={{
+              width: 220,
+              height: 220,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "6rem"
+            }}>👟</div>
+          )}
         </button>
       </div>
       <h2 style={{ color: "#2563eb", margin: "12px 0 16px 0", fontWeight: 700, letterSpacing: 1 }}>Upgrades</h2>
