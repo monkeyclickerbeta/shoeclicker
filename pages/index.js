@@ -24,6 +24,7 @@ export default function Home() {
   const [cps, setCps] = useState(0);
   const [owned, setOwned] = useState(Array(UPGRADES.length).fill(0));
   const [imgError, setImgError] = useState(false);
+  const [showRestartWarning, setShowRestartWarning] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -70,13 +71,14 @@ export default function Home() {
     }
   }
 
-  function resetGame() {
+  function reallyRestartGame() {
     setClicks(0);
     setCps(0);
     setOwned(Array(UPGRADES.length).fill(0));
     if (typeof window !== "undefined") {
       window.localStorage.removeItem("shoeclicker-state");
     }
+    setShowRestartWarning(false);
   }
 
   return (
@@ -133,7 +135,57 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <button className="reset-btn" onClick={resetGame}>Reset Game</button>
+      <button 
+        className="reset-btn" 
+        onClick={() => setShowRestartWarning(true)}
+        style={{background: "#f59e42"}}
+      >
+        Restart Game
+      </button>
+      {showRestartWarning && (
+        <div className="restart-popup">
+          <div className="restart-popup-inner">
+            <h3>Are you sure you want to restart?</h3>
+            <p>
+              <b>All your progress will be <span style={{color:"#ef4444"}}>permanently deleted</span>!</b><br/>
+              This cannot be undone.
+            </p>
+            <div style={{marginTop: 18}}>
+              <button 
+                onClick={reallyRestartGame}
+                style={{
+                  background: "#ef4444",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 8,
+                  fontWeight: "bold",
+                  fontSize: "1rem",
+                  padding: "8px 28px",
+                  marginRight: "12px",
+                  cursor: "pointer"
+                }}
+              >
+                Yes, Restart
+              </button>
+              <button 
+                onClick={() => setShowRestartWarning(false)}
+                style={{
+                  background: "#a3a3a3",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 8,
+                  fontWeight: "bold",
+                  fontSize: "1rem",
+                  padding: "8px 18px",
+                  cursor: "pointer"
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <footer>
         <p>
           Cool shoe game! <span style={{color:"#2563eb"}}>Made with Next.js + Vercel</span>
