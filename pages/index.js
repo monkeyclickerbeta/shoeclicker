@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react";
 
-// Reliable transparent sneaker PNG from PNGWing
+// Reliable transparent sneaker PNG from PNGimg
 const SHOE_IMAGE = "https://pngimg.com/d/sneakers_PNG34.png";
 
 const UPGRADES = [
   { name: "Bigger Shoe", cost: 50, cps: 1, desc: "+1 click/sec" },
   { name: "Shoe Factory", cost: 200, cps: 5, desc: "+5 clicks/sec" },
-  { name: "Golden Laces", cost: 1000, cps: 25, desc: "+25 clicks/sec" }
+  { name: "Golden Laces", cost: 450, cps: 25, desc: "+25 clicks/sec" },
+  { name: "Sneaker Robot", cost: 1200, cps: 60, desc: "+60 clicks/sec" },
+  { name: "Ultra Boost Sole", cost: 5000, cps: 200, desc: "+200 clicks/sec" },
+  { name: "Diamond Studs", cost: 20000, cps: 900, desc: "+900 clicks/sec" },
+  { name: "Shoe Empire", cost: 90000, cps: 5000, desc: "+5,000 clicks/sec" },
+  { name: "Galactic Sneakers", cost: 400000, cps: 18000, desc: "+18,000 clicks/sec" },
+  { name: "Quantum Laces", cost: 2200000, cps: 90000, desc: "+90,000 clicks/sec" },
+  { name: "Time Traveler's Kick", cost: 12000000, cps: 450000, desc: "+450,000 clicks/sec" },
+  { name: "Mythical Shoemaker", cost: 70000000, cps: 1800000, desc: "+1,800,000 clicks/sec" },
+  { name: "Infinite Walkers", cost: 400000000, cps: 8500000, desc: "+8,500,000 clicks/sec" },
+  { name: "Godspeed Soles", cost: 2500000000, cps: 45000000, desc: "+45,000,000 clicks/sec" }
 ];
 
 export default function Home() {
