@@ -201,7 +201,7 @@ export default function Home() {
       )}
       <footer>
         <p>
-          Cool shoe game! <span style={{color:"#2563eb"}}>Made with Next.js + Vercel</span>
+          Made By Ozzy
         </p>
       </footer>
     </main>
