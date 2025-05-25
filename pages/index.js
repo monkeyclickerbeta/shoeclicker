@@ -26,6 +26,17 @@ export default function Home() {
   const [imgError, setImgError] = useState(false);
   const [showRestartWarning, setShowRestartWarning] = useState(false);
 
+  // Force refresh as soon as the site loads (client-side)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Prevent infinite refresh loop by setting a sessionStorage flag
+      if (!window.sessionStorage.getItem("shoeclicker-refreshed")) {
+        window.sessionStorage.setItem("shoeclicker-refreshed", "1");
+        window.location.reload();
+      }
+    }
+  }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = window.localStorage.getItem("shoeclicker-state");
@@ -77,6 +88,7 @@ export default function Home() {
     setOwned(Array(UPGRADES.length).fill(0));
     if (typeof window !== "undefined") {
       window.localStorage.removeItem("shoeclicker-state");
+      window.sessionStorage.removeItem("shoeclicker-refreshed");
     }
     setShowRestartWarning(false);
   }
