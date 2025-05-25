@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(ellipse at 50% 20%, #f8fafc 60%, #60a5fa 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 520px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(60,130,250,0.13), 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px 24px 32px 24px;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 2px;
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+  color: #2563eb;
+  text-shadow: 0 2px 8px #60a5fa33;
+}
+
+.stats {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-around;
+}
+
+.shoe-btn {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  display: inline-block;
+}
+.shoe-btn:active {
+  transform: scale(0.96);
+  filter: brightness(0.97);
+}
+
+/* Big, stylish clicker box */
+.clicker-box {
+  margin: 0 auto 32px auto;
+  background: linear-gradient(160deg, #f1f5f9 70%, #93c5fd 100%);
+  border-radius: 32px;
+  box-shadow: 0 6px 24px #2563eb0d, 0 1.5px 0 #60a5fa50;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 4px solid #2563eb33;
+}
+
+.upgrades {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.upgrade-card {
+  background: linear-gradient(90deg, #e0e7ff 70%, #bae6fd 100%);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 2px 6px #2563eb11;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upgrade-info {
+  text-align: left;
+}
+
+.upgrade-card button {
+  padding: 7px 22px;
+  border-radius: 7px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  margin-left: 18px;
+  transition: background 0.13s;
+  box-shadow: 0 1.5px 0 #60a5fa50;
+}
+.upgrade-card button:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  margin-top: 24px;
+  background: #f59e42;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  box-shadow: 0 1.5px 0 #fca5a555;
+  transition: background 0.15s;
+}
+.reset-btn:hover {
+  background: #f97316;
+}
+
+footer {
+  margin-top: 36px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.restart-popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(60, 60, 60, 0.40);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restart-popup-inner {
+  background: #fff;
+  padding: 36px 28px 24px 28px;
+  border-radius: 18px;
+  box-shadow: 0 6px 28px #2563eb22;
+  max-width: 92vw;
+  width: 360px;
+  text-align: center;
+  animation: popupShow 0.15s cubic-bezier(.53,1.6,.15,.88);
+}
+
+@keyframes popupShow {
+  from { opacity: 0; transform: scale(0.94);}
+  to   { opacity: 1; transform: scale(1);}
+}
