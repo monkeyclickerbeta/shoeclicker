@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-const PASSWORD = "adminozzyonly1122";
+const PASSWORD = "zebragod1234"; // <-- updated password
 
 export default function AdminPanel() {
   const [inputPassword, setInputPassword] = useState("");
@@ -119,11 +119,6 @@ export default function AdminPanel() {
               style={{
                 marginLeft: 10,
                 padding: "8px 18px",
-                fontSize: "1.1rem",
-                borderRadius: 9,
-                border: "1px solid #2563eb",
-                outline: "none",
-                width: 120
               }}
             />
           </label>
@@ -131,7 +126,7 @@ export default function AdminPanel() {
         <button
           type="submit"
           style={{
-            background: "#16a34a",
+            background: "#2563eb",
             color: "#fff",
             border: "none",
             borderRadius: 9,
@@ -143,26 +138,8 @@ export default function AdminPanel() {
         >
           Save
         </button>
-        {error && <div style={{ color: error === "Clicks updated! Refresh the main page." ? "#16a34a" : "#ef4444", marginTop: 20 }}>{error}</div>}
+        {error && <div style={{ color: "#ef4444", marginTop: 20 }}>{error}</div>}
       </form>
-      <div style={{ marginTop: 42 }}>
-        <button
-          onClick={() => router.push("/")}
-          style={{
-            background: "#2563eb",
-            color: "#fff",
-            border: "none",
-            borderRadius: 7,
-            padding: "8px 30px",
-            fontWeight: "bold",
-            fontSize: "1rem",
-            marginTop: 10,
-            cursor: "pointer"
-          }}
-        >
-          Go Back to Game
-        </button>
-      </div>
     </main>
   );
 }
